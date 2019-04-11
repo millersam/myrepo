@@ -26,10 +26,17 @@ campaign_descriptions_long %>%
   ggplot(aes(x = date, y = campaign_id %>% fct_reorder(date, .fun = "min"))) + 
   geom_vline(xintercept = as.Date("2017-01-01"), size = 2, colour = "white") +
   geom_vline(xintercept = as.Date("2017-12-31"), size = 2, colour = "white") + 
-  geom_line(size = 1.5, colour = "grey50") + 
+  geom_line(colour = "grey50", size = 1.5) + 
   geom_point(aes(colour = campaign_type), size = 4) + 
   scale_x_date(
     date_breaks = "month",
-    date_labels = 
+    date_labels = "%b %e, %Y"
+  ) +
+  theme(
+    legend.position = "bottom",
+    axis.text.x = element_text(angle = 45, hjust = 1)
   )
+
+
+
   #coord_cartesian(xlim = c(as.Date("2017-01-01"), as.Date("2017-12-31")))
